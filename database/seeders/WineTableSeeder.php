@@ -13,15 +13,17 @@ class WineTableSeeder extends Seeder
      */
     public function run(): void
     {
+        
         $response = Http::get('http://api.sampleapis.com/wines/reds');
         $data = $response->json();
-        $newWine = new Wine();
-        $newWine->winery = $newWine['winery']; 
-        $newWine->wine = $newWine['wine'];
-        $newWine->rating = $newWine['rating'];
-        $newWine->location = $newWine['location'];
-        $newWine->image = $newWine['image'];
-        $newWine->save();
-        // dd($newWine);
+        foreach($data as $wine) { 
+            $newWine = new Wine();
+            $newWine->winery = $wine['winery'];
+            $newWine->wine = $wine['wine'];
+            $newWine->rating = $wine['rating']['average'];
+            $newWine->location = $wine['location'];
+            $newWine->image = $wine['image']; 
+            $newWine->save();
+        };
     }
 }
