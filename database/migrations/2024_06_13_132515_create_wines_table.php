@@ -13,6 +13,11 @@ return new class extends Migration
     {
         Schema::create('wines', function (Blueprint $table) {
             $table->id();
+            $table->string('winery')->nullable();
+            $table->string('wine')->nullable();
+            $table->string('rating')->nullable();
+            $table->string('location')->nullable();
+            $table->string('image')->nullable();
             $table->timestamps();
         });
     }
