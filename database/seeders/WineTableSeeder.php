@@ -21,6 +21,7 @@ class WineTableSeeder extends Seeder
             $newWine->winery = $wine['winery'];
             $newWine->wine = $wine['wine'];
             $newWine->rating = $wine['rating']['average'];
+            $newWine->rating_reviews = $wine['rating']['reviews'];
             $newWine->location = $wine['location'];
             $newWine->image = $wine['image']; 
             $newWine->save();
