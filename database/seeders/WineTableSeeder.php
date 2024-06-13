@@ -13,7 +13,8 @@ class WineTableSeeder extends Seeder
      */
     public function run(): void
     {
-        $response = Http::withHeader([])->get('https://api.sampleapis.com/wines/reds');
-        dd($response);
+        $response = Http::get('http://api.sampleapis.com/wines/reds');
+        $data = $response->json();
+        dd($data);
     }
 }
