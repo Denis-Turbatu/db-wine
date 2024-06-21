@@ -43,8 +43,9 @@ class WineController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Wine $wine)
+    public function edit(string $id)
     {
+        $wine = Wine::findOrFail($id);
         return view('admin.wines.edit', compact('wine'));
     }
 
