@@ -54,7 +54,11 @@ class WineController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        $data = $request->all();
+        $wine = Wine::findOrFail($id);
+        $wine->fill($data);
+        $wine->save();
+        return redirect()->route('admin.wines.index')->with('message', 'Il vino : '. $wine->wine .' è stato aggiornato con successo.');
     }
 
     /**
@@ -62,6 +66,7 @@ class WineController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        $wine = Wine::findOrFail($id);
+        return redirect()->route('admin.wines.index')->with('message', 'Il vino : '. $wine->title . ' è stato cancellato con successo.');
     }
 }
