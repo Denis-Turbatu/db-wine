@@ -19,9 +19,9 @@ class WineController extends Controller
     /**
      * Show the form for creating a new resource.
      */
-    public function create()
+    public function create(Wine $wine)
     {
-        //
+        return view('admin.wines.create');
     }
 
     /**
@@ -29,15 +29,20 @@ class WineController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $data = $request->all();
+        $wine = new Wine;
+        $wine->fill($data);
+        $wine->save();
+
+        return redirect()->route("admin.wines.index");
     }
 
     /**
      * Display the specified resource.
      */
-    public function show(string $id)
+    public function show(Wine $wine)
     {
-        //
+        return view('admin.wines.show', compact('wine'));
     }
 
     /**
