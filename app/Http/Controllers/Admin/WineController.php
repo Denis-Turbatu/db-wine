@@ -5,7 +5,6 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Models\Wine;
 use Illuminate\Http\Request;
-use App\Models\Wine;
 class WineController extends Controller
 {
     /**
