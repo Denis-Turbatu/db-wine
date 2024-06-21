@@ -4,7 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-
+use App\Models\Wine;
 class WineController extends Controller
 {
     /**
@@ -12,7 +12,8 @@ class WineController extends Controller
      */
     public function index()
     {
-        return view('admin.wines.index');
+        $wines = Wine::all();
+        return view('admin.wines.index', compact('wines'));
     }
 
     /**
