@@ -3,7 +3,7 @@
 @section('content')
     <h1>Modifica Informazioni Vino :</h1>
 
-    <form action="{{ route('admin.wines.update', ['wine' => $wine->id])}}" method="post">
+    <form action="{{ route('admin.wines.update', ['wine' => $wine->id])}}" method="post" enctype="multipart/form-data">
         @csrf
         @method('PUT')
 
