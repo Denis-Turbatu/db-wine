@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\Wine;
 use Illuminate\Http\Request;
 
 class WineController extends Controller
@@ -42,9 +43,9 @@ class WineController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $id)
+    public function edit(Wine $wine)
     {
-        //
+        return view('admin.wines.edit', compact('wine'));
     }
 
     /**
