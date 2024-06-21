@@ -1,5 +1,9 @@
 <?php
 
+use App\Http\Controllers\Admin\DashboardController;
+use App\Http\Controllers\Admin\WineController;
+use App\Http\Controllers\ProfileController;
+use App\Models\Wine;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -14,5 +18,15 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('home');
+    return view('welcome');
 });
+
+Route::middleware('auth')
+    ->prefix('admin') 
+    ->name('admin.') 
+    ->group(function () {
+        Route::get('/', [DashboardController::class, 'index'])->name('dashboard');
+        Route::resource('wines', WineController::class);
+    });
+
+require __DIR__ . '/auth.php';
