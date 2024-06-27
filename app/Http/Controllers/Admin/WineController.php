@@ -30,6 +30,9 @@ class WineController extends Controller
     public function store(Request $request)
     {
         $data = $request->all();
+        // if ($request->hasFile()) {
+        //     # code...
+        // }
         $wine = new Wine;
         $wine->fill($data);
         $wine->save();
