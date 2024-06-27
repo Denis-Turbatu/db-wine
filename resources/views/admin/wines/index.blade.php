@@ -6,7 +6,7 @@
     <div class="container">
         <div class="d-flex justify-content-between align-items-center my-5">
             <h1>Lista Wines</h1>
-            <a href="{{route('admin.wines.create')}}">Crea</a>
+            <a href="{{route('admin.wines.create')}}" class="px-4 py-2 bg-success text-white rounded-2 text-decoration-none"">Crea</a>
         </div>
         <div class="row">
             <table class="table">
@@ -27,7 +27,15 @@
                             <td>{{$wine->rating}}</td>
                             <td>{{$wine->location}}</td>
                             <th scope="col">
-                                <a href="{{route('admin.wines.show', ['wine'=>$wine->id])}}">Dettagli</a>
+                                <div class="d-flex gap-2">
+                                    <a href="{{route('admin.wines.show', ['wine'=>$wine->id])}}" class="px-3 py-2 bg-primary text-white rounded-2 text-decoration-none"">Dettagli</a>
+                                    <a href="{{route('admin.wines.edit', ['wine'=>$wine->id])}}" class="px-3 py-2 bg-warning text-white rounded-2 text-decoration-none">Modifica</a>
+                                    <form action="{{route('admin.wines.destroy', ['wine'=>$wine->id])}}" method="POST">
+                                        @csrf
+                                        @method('DELETE')
+                                        <button type="submit" class="px-3 py-2 bg-danger text-white rounded-2 text-decoration-none border border-none">Cancella</button>
+                                    </form>
+                                </div>
                             </th>
                         </tr>
                     @endforeach
