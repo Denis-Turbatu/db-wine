@@ -31,8 +31,13 @@
                 value="{{ old('location', $wine->location) }}">
         </div>
         <div>
-            <label for="image">Immagine vino :</label>
-            <input type="file" name="image" id="image">
+            <label for="cover_image">Immagine vino :</label>
+            <input type="file" name="cover_image" id="cover_image">
         </div>
+
+        <button class="btn btn-primary" type="submit">Salva</button>
     </form>
+
+    <img src="{{ asset('storage/' . $wine->cover_image) }}" alt="">
+
 @endsection
