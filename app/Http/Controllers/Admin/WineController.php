@@ -5,6 +5,8 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Models\Wine;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
+
 class WineController extends Controller
 {
     /**
@@ -30,9 +32,10 @@ class WineController extends Controller
     public function store(Request $request)
     {
         $data = $request->all();
-        // if ($request->hasFile()) {
-        //     # code...
-        // }
+        if ($request->hasFile('cover_image')) {
+             $imagePath = Storage::put('postImg',$request->cover_image);
+             $data['cover_image'] = $imagePath;
+        }
         $wine = new Wine;
         $wine->fill($data);
         $wine->save();
