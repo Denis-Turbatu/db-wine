@@ -5,7 +5,7 @@
     <div class="container">
         <h1 class="my-5">Aggiungi un vino!</h1>
 
-        <form action="{{ route('admin.wines.store') }}" method="POST" class="mb-3">
+        <form action="{{ route('admin.wines.store') }}" method="POST" class="mb-3" enctype="multipart/form-data">
             {{-- Cookie per far riconoscere il form al server --}}
             @csrf
 
@@ -35,8 +35,8 @@
             </div>
 
             <div class="mb-3">
-                <label for="image" class="form-label fw-semibold">Image</label>
-                <input type="image" class="form-control" id="image" name="image">
+                <label for="cover_image" class="form-label fw-semibold">Image</label>
+                <input type="file" class="form-control" id="cover_image" name="cover_image">
             </div>
 
             <button class="btn btn-success" type="submit">Salva</button>

@@ -3,19 +3,17 @@
 @section('content')
     <h1>Modifica Informazioni Vino :</h1>
 
-    <form action="{{ route('admin.wines.update', ['wine' => $wine->id])}}" method="post" enctype="multipart/form-data">
+    <form action="{{ route('admin.wines.update', ['wine' => $wine->id]) }}" method="post" enctype="multipart/form-data">
         @csrf
         @method('PUT')
 
         <div class="mb-3">
             <label for="winery" class="form-label">Azienda Vinicola : </label>
-            <input type="text" class="form-control" id="winery" name="winery"
-                value="{{ old('winery', $wine->winery) }}">
+            <input type="text" class="form-control" id="winery" name="winery" value="{{ old('winery', $wine->winery) }}">
         </div>
         <div class="mb-3">
             <label for="wine" class="form-label">Nome Vino :</label>
-            <input type="text" class="form-control" id="wine" name="wine"
-                value="{{ old('wine', $wine->wine) }}">
+            <input type="text" class="form-control" id="wine" name="wine" value="{{ old('wine', $wine->wine) }}">
         </div>
         <div class="mb-3">
             <label for="rating" class="form-label">Voto recensioni :</label>
@@ -35,6 +33,6 @@
         <div>
             <label for="image">Immagine vino :</label>
             <input type="file" name="image" id="image">
-          </div>
+        </div>
     </form>
 @endsection
