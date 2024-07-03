@@ -24,11 +24,11 @@
                         <tr>
                             <td>{{$wine->winery}}</td>
                             <td>{{$wine->wine}}</td>
-                            <td>{{$wine->rating}}</td>
                             <td>{{$wine->location}}</td>
+                            <td>{{$wine->rating}}</td>
                             <th scope="col">
                                 <div class="d-flex gap-2">
-                                    <a href="{{route('admin.wines.show', ['wine'=>$wine->id])}}" class="px-3 py-2 bg-primary text-white rounded-2 text-decoration-none"">Dettagli</a>
+                                    <a href="{{route('admin.wines.show', ['wine'=>$wine->id])}}" class="px-3 py-2 bg-primary text-white rounded-2 text-decoration-none">Dettagli</a>
                                     <a href="{{route('admin.wines.edit', ['wine'=>$wine->id])}}" class="px-3 py-2 bg-warning text-white rounded-2 text-decoration-none">Modifica</a>
                                     <form action="{{route('admin.wines.destroy', ['wine'=>$wine->id])}}" method="POST">
                                         @csrf
