@@ -14,7 +14,8 @@ class WineController extends Controller
      */
     public function index()
     {
-        $wines = Wine::all();
+        $wines = Wine::paginate(9);
+        //CIAOOOOOOOOOOO WAGLIOO
         return view('admin.wines.index', compact('wines'));
     }
 
@@ -33,8 +34,8 @@ class WineController extends Controller
     {
         $data = $request->all();
         if ($request->hasFile('cover_image')) {
-             $imagePath = Storage::put('postImg',$request->cover_image);
-             $data['cover_image'] = $imagePath;
+            $imagePath = Storage::put('postImg', $request->cover_image);
+            $data['cover_image'] = $imagePath;
         }
         $wine = new Wine;
         $wine->fill($data);
@@ -68,32 +69,31 @@ class WineController extends Controller
         $data = $request->all();
         $wine = Wine::findOrFail($id);
 
-        if($request->hasFile('cover_image')) {
-            if($wine->cover_image) {
+        if ($request->hasFile('cover_image')) {
+            if ($wine->cover_image) {
                 Storage::delete($wine->cover_image);
             }
 
-            $imagePath = Storage::put('postImg',$request->cover_image);
+            $imagePath = Storage::put('postImg', $request->cover_image);
             $data['cover_image'] = $imagePath;
-
         }
 
         $wine->fill($data);
         $wine->save();
-        return redirect()->route('admin.wines.index')->with('message', 'Il vino : '. $wine->wine .' è stato aggiornato con successo.');
+        return redirect()->route('admin.wines.index')->with('message', 'Il vino : ' . $wine->wine . ' è stato aggiornato con successo.');
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Request $request , string $id)
+    public function destroy(Request $request, string $id)
     {
         $wine = Wine::findOrFail($id);
-        if($request->hasFile('cover_image')) {
-            if($wine->cover_image) {
+        if ($request->hasFile('cover_image')) {
+            if ($wine->cover_image) {
                 Storage::delete($wine->cover_image);
             }
         }
-        return redirect()->route('admin.wines.index')->with('message', 'Il vino : '. $wine->title . ' è stato cancellato con successo.');
+        return redirect()->route('admin.wines.index')->with('message', 'Il vino : ' . $wine->title . ' è stato cancellato con successo.');
     }
 }
