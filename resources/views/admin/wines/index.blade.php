@@ -22,7 +22,6 @@
                 <tbody>
                     @foreach ($wines as $wine)
                         <tr>
-                            <td>{{$wine->winery}}</td>
                             <td>{{$wine->wine}}</td>
                             <td>{{$wine->rating}}</td>
                             <td>{{$wine->location}}</td>
