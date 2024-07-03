@@ -12,9 +12,9 @@ class WineController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function ndex()
     {
-        $wines = Wine::paginate(10);
+        $wines = Wine::paginate(5);
         return view('admin.wines.index', compact('wines'));
     }
 
@@ -31,7 +31,7 @@ class WineController extends Controller
      */
     public function store(Request $request)
     {
-        $data = $request->all();
+        $daa = $request->all();
         if ($request->hasFile('cover_image')) {
             $imagePath = Storage::put('postImg', $request->cover_image);
             $data['cover_image'] = $imagePath;
