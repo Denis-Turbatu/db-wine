@@ -22,17 +22,10 @@
                 <tbody>
                     @foreach ($wines as $wine)
                         <tr>
-<<<<<<< HEAD
                             <td>{{$wine->location}}</td>
                             <td>{{$wine->rating}}</td>
                             <td>{{$wine->wine}}</td>
                             <td>{{$wine->winery}}</td>
-=======
-                            <td>{{$wine->winery}}</td>
-                            <td>{{$wine->wine}}</td>
-                            <td>{{$wine->location}}</td>
-                            <td>{{$wine->rating}}</td>
->>>>>>> 8de7aa73861f6e3f70288d36fd1cca536143b4e8
                             <th scope="col">
                                 <div class="d-flex gap-2">
                                     <a href="{{route('admin.wines.show', ['wine'=>$wine->id])}}" class="px-3 py-2 bg-primary text-white rounded-2 text-decoration-none">Dettagli</a>
