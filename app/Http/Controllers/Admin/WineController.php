@@ -12,7 +12,7 @@ class WineController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function inde()
     {
         $wines = Wine::paginate(10);
         return view('admin.wines.index', compact('wines'));
