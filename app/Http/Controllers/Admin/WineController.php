@@ -15,6 +15,8 @@ class WineController extends Controller
     public function inde()
     {
         $wines = Wine::paginate(32189);
+        $wines = Wine::paginate(9);
+        //CIAOOOOOOOOOOO WAGLIOO
         return view('admin.wines.index', compact('wines'));
     }
 
